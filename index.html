@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ขอถวายพรวันคล้ายวันเกิด 🙏</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ffecd2,#fcb69f,#f6d365,#fda085);
+    background-size: 400% 400%;
+    animation: bgMove 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.card {
+    background: white;
+    width: 360px;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(200,150,80,0.35);
+    z-index: 2;
+}
+
+h1 { color:#d4a017; margin:0; }
+h2 { color:#e6b566; margin:5px 0 15px; }
+
+.image-box {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1.5s ease;
+}
+
+.fade { opacity: 0; }
+
+p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 18px;
+    line-height: 1.7;
+}
+
+.star {
+    position: absolute;
+    top: -10px;
+    font-size: 14px;
+    animation: starFall linear infinite;
+}
+
+@keyframes starFall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.balloon {
+    position: absolute;
+    bottom: -60px;
+    font-size: 26px;
+    animation: balloonUp linear infinite;
+}
+
+@keyframes balloonUp {
+    to {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+<audio autoplay loop volume="0.3">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1>🙏 ขอถวายพร</h1>
+    <h2>วันคล้ายวันเกิด</h2>
+
+    <div class="image-box">
+        <img id="photo" src="img1.jpg">
+    </div>
+
+    <p>
+         เนื่องในโอกาสวันคล้ายวันเกิด<br>
+    	ขอถวายพรแด่ตุ๊เจ้าหน้อย 🙏<br>
+    	ขอให้มีสุขภาพแข็งแรง กายใจผ่องใส ✨<br>
+    	เจริญในธรรม มีกำลังใจมั่นคงในทางบุญ 🌿<br>
+    	เป็นที่พึ่งทางใจและร่มโพธิ์ร่มไทร<br>
+   	และเป็นเนื้อนาบุญอันประเสริฐสืบไป 🙏
+    </p>
+</div>
+
+<script>
+const images = [
+    "img1.jpg",
+    "img2.jpg",
+    "img3.jpg",
+    "img4.jpg"
+];
+
+let index = 0;
+const photo = document.getElementById("photo");
+
+setInterval(() => {
+    photo.classList.add("fade");
+    setTimeout(() => {
+        index = (index + 1) % images.length;
+        photo.src = images[index];
+        photo.classList.remove("fade");
+    }, 1500);
+}, 5000);
+</script>
+
+<script>
+setInterval(() => {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.innerText = "✨";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(star);
+    setTimeout(() => star.remove(), 8000);
+}, 900);
+
+setInterval(() => {
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.innerText = "🪷";
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.animationDuration = (7 + Math.random() * 4) + "s";
+    document.body.appendChild(balloon);
+    setTimeout(() => balloon.remove(), 12000);
+}, 2200);
+</script>
+
+</body>
+</html>
